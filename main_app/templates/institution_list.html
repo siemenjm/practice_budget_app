@@ -7,17 +7,19 @@
 
 <form class="mb-5" method="get">
     <div class="field has-addons">
-      <div class="control">
-        <!--  Our input will search by name of institution  -->
-        <input class="input" type="text" name="name" placeholder="name" />
-      </div>
-      <div class="control">
-        <input class="button is-success" type="submit" value="Search" />
-      </div>
+        <div class="control">
+            <!--  Our input will search by name of institution  -->
+            <input class="input" type="text" name="name" placeholder="name" />
+        </div>
+        <div class="control">
+            <input class="button is-success" type="submit" value="Search" />
+        </div>
     </div>
     <!--  This anchor tag will redirect back to institution list without a query param -->
     <a class="button is-dark" href="{% url 'institution_list' %}">Clear Search</a>
-  </form>
+</form>
+
+<a class="button" href="{% url 'institution_create' %}">Add Institution</a>
 
 <div class="gallery">
   {% for institution in institutions %}

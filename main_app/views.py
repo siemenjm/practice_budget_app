@@ -56,3 +56,9 @@ class AccountList(TemplateView):
         #     context['header'] = 'Your Institutions'
 
         return context
+
+class AccountCreate(CreateView):
+    model = Account
+    fields = ['account_id', 'balance_available', 'balance_current', 'name', 'account_type', 'account_subtype', 'institution']
+    template_name = 'account_create.html'
+    success_url = '/accounts/'

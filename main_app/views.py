@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
 from django.views.generic import DetailView
-from .models import Institution
+from .models import Account, Institution
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -37,3 +37,22 @@ class InstitutionCreate(CreateView):
 class InstitutionDetail(DetailView):
     model = Institution
     template_name = 'institution_detail.html'
+
+class AccountList(TemplateView):
+    template_name = 'account_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["accounts"] = Account.objects.all()
+        context['header'] = 'Your Accounts'
+
+        # name = self.request.GET.get('name')
+        # if name != None:
+        #     context['institutions'] = Institution.objects.filter(name__icontains=name)
+        #     context['header'] = f'Searching for {name}'
+        # else:
+        #     context["institutions"] = Institution.objects.all()
+        #     context['header'] = 'Your Institutions'
+
+        return context

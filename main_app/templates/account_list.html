@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Accounts{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">{{ header }}</h1>
+
+{% comment %} <a class="button" href="{% url 'account_create' %}">Add Account</a> {% endcomment %}
+
+<div class="gallery">
+  {% for account in accounts %}
+  <div class="account">
+    <span><b>{{account.name}}</b></span>
+    <span>Bank: {{account.institution}}</span>
+    <span>Account id: {{account.account_id}}</span>
+    <span>Type: {{account.account_type}}</span>
+    <span>Subtype: {{account.account_subtype}}</span>
+    <span>Current Balance: {{account.balance_current}}</span>
+</div>
+	{% empty %}
+  <article class="message">
+    <div class="message-header">
+      <p>No Accounts Available</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

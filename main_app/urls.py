@@ -7,4 +7,5 @@ urlpatterns = [
     path('institutions/', views.InstitutionList.as_view(), name='institution_list'),
     path('institutions/new/', views.InstitutionCreate.as_view(), name='institution_create'),
     path('institutions/<int:pk>/', views.InstitutionDetail.as_view(), name='institution_detail'),
+    path('accounts/', views.AccountList.as_view(), name='account_list'),
 ]

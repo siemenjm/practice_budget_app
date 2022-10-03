@@ -3,6 +3,7 @@ from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView
+from django.views.generic import DetailView
 from .models import Institution
 
 class Home(TemplateView):
@@ -32,3 +33,7 @@ class InstitutionCreate(CreateView):
     fields = ['institution_id', 'name', 'logo']
     template_name = 'institution_create.html'
     success_url = '/institutions/'
+
+class InstitutionDetail(DetailView):
+    model = Institution
+    template_name = 'institution_detail.html'

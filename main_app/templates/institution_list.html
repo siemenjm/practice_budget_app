@@ -23,7 +23,7 @@
 
 <div class="gallery">
   {% for institution in institutions %}
-  <a href="">
+  <a href="{% url 'institution_detail' institution.pk %}">
     <div class="card">
       <div class="card-image">
         <figure class="image is-square">

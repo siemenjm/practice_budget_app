@@ -11,6 +11,7 @@
         <h3 class="title is-3">Accounts</h3>
 
         {% for account in institution.accounts.all %}
+        <a href="{% url 'account_detail' account.pk %}"> 
             <div class="account">
                 <span>{{forloop.counter}}</span>
                 <span><b>{{account.name}}</b></span>
@@ -18,12 +19,13 @@
                 <span>Subtype: {{account.account_subtype}}</span>
                 <span>Current Balance: {{account.balance_current}}</span>
             </div>
+        </a>
         {% empty %}
-            <article class="message">
-                <div class="message-header">
-                    <p>No Accounts Available</p>
-                </div>
-            </article>
+        <article class="message">
+            <div class="message-header">
+                <p>No Accounts Available</p>
+            </div>
+        </article>
 
         {% endfor %}
     </div>

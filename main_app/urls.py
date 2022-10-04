@@ -9,5 +9,7 @@ urlpatterns = [
     path('institutions/<int:pk>/', views.InstitutionDetail.as_view(), name='institution_detail'),
     path('accounts/', views.AccountList.as_view(), name='account_list'),
     path('accounts/new/', views.AccountCreate.as_view(), name='account_create'),
+    path('accounts/<int:pk>/', views.AccountDetail.as_view(), name='account_detail'),
     path('transactions/', views.TransactionList.as_view(), name='transaction_list'),
+    path('transaction/new/', views.TransactionCreate.as_view(), name='transaction_create'),
 ]

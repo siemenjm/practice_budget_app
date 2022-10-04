@@ -55,6 +55,10 @@ class AccountCreate(CreateView):
     template_name = 'account_create.html'
     success_url = '/accounts/'
 
+class AccountDetail(DetailView):
+    model = Account
+    template_name = 'account_detail.html'
+
 class TransactionList(TemplateView):
     template_name = 'transaction_list.html'
 
@@ -65,3 +69,9 @@ class TransactionList(TemplateView):
         context['header'] = 'Your Transactions'
 
         return context
+
+class TransactionCreate(CreateView):
+    model = Transaction
+    fields = ['amount', 'description', 'category', 'sub_category', 'sub_sub_category', 'debited_account', 'credited_account', 'transaction_date']
+    template_name = 'transaction_create.html'
+    success_url = '/transactions/'

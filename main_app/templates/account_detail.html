@@ -1,0 +1,40 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="detail__name">
+    <div class="account">
+        <span><b>{{account.name}}</b></span>
+        <span>Type: {{account.account_type}}</span>
+        <span>Subtype: {{account.account_subtype}}</span>
+        <span>Current Balance: {{account.balance_current}}</span>
+    </div>
+</div>
+<div class="detail__container">
+    <div class="detail__transactions mb-5">
+        <h3 class="title is-3">Transactions</h3>
+
+        {% for transaction in account.credit_transactions.all %}
+        {% comment %} <a href="{% url 'transaction_detail' transaction.pk %}">  {% endcomment %}
+            <div class="transaction">
+                <span>{{forloop.counter}}</span>
+                <span><b>Desc: {{transaction.description}}</b></span>
+                <span>Amount: ${{transaction.amount}}</span>
+                <span>Category: {{transaction.category}}</span>
+                <span>Sub-Category: {{transaction.sub_category}}</span>
+                <span>Sub-Sub-Category: {{transaction.sub_sub_category}}</span>
+                <span>Debited Acct: {{transaction.debited_account}}</span>
+                <span>Credited Acct: {{transaction.credited_account}}</span>
+                <span>Transaction Date: {{transaction.transaction_date}}</span>
+            </div>
+        {% comment %} </a> {% endcomment %}
+        {% empty %}
+        <article class="message">
+            <div class="message-header">
+                <p>No Transactions on this Account</p>
+            </div>
+        </article>
+
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

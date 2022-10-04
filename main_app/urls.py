@@ -12,4 +12,5 @@ urlpatterns = [
     path('accounts/<int:pk>/', views.AccountDetail.as_view(), name='account_detail'),
     path('transactions/', views.TransactionList.as_view(), name='transaction_list'),
     path('transaction/new/', views.TransactionCreate.as_view(), name='transaction_create'),
+    path('transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction_detail'),
 ]

@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% block content %}
+<div class="detail__container">
+    <div class="detail__transactions mb-5">
+        <h3 class="title is-3">Transaction</h3>
+        <span><b>Desc: {{transaction.description}}</b></span>
+        <span>Amount: ${{transaction.amount}}</span>
+        <span>Category: {{transaction.category}}</span>
+        <span>Sub-Category: {{transaction.sub_category}}</span>
+        <span>Sub-Sub-Category: {{transaction.sub_sub_category}}</span>
+        <span>Debited Acct: {{transaction.debited_account}}</span>
+        <span>Credited Acct: {{transaction.credited_account}}</span>
+        <span>Transaction Date: {{transaction.transaction_date}}</span>
+        
+    </div>
+</div>
+
+{% endblock %}

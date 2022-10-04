@@ -75,3 +75,7 @@ class TransactionCreate(CreateView):
     fields = ['amount', 'description', 'category', 'sub_category', 'sub_sub_category', 'debited_account', 'credited_account', 'transaction_date']
     template_name = 'transaction_create.html'
     success_url = '/transactions/'
+
+class TransactionDetail(DetailView):
+    model = Transaction
+    template_name = 'transaction_detail.html'

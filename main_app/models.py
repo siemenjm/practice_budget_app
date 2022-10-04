@@ -29,7 +29,7 @@ class Account(models.Model):
         ordering = ['account_id']
 
 class Transaction(models.Model):
-    amount = models.IntegerField(default=0)
+    amount = models.DecimalField(max_digits=15, decimal_places=2)
     description = models.CharField(max_length=250)
     category = models.CharField(max_length=250)
     sub_category = models.CharField(max_length=250, default='')

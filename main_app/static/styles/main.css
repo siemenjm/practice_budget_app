@@ -112,3 +112,50 @@ body {
   .detail__container {
     margin-top: 500px;
   }
+
+  .transaction-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .transaction {
+    color: black;
+    background-color: #cfe8ff;
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    grid-template-rows: 50% 50%;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .transaction > * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .transaction p {
+    font-size: 20px;
+  }
+
+  .description, .amount {
+    font-weight: bold;
+  }
+
+  .transaction > .categories {
+    display: flex;
+  }
+
+  .category, .credited-institution, .debited-institution {
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-right: 10px;
+  }
+
+  .credited-account {
+    margin-right: 20px;
+  }
+
+  .accounts-container {
+    grid-area: 2 / 1 / span 1 / span 2;
+    display: flex;
+  }

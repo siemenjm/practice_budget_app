@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Transaction{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">{{ header }}</h1>
+
+{% comment %} <a class="button" href="{% url 'transaction_create' %}">Add Transaction</a> {% endcomment %}
+
+<div class="gallery">
+  {% for transaction in transactions %}
+  <div class="transaction">
+    <span><b>{{transaction.description}}</b></span>
+    <span><b>Date: {{transaction.transaction_date}}</b></span>
+    <span><b>Debited Account: {{transaction.debited_account}}</b></span>
+    <span><b>Credited Account: {{transaction.credited_account}}</b></span>
+</div>
+	{% empty %}
+  <article class="message">
+    <div class="message-header">
+      <p>No Transactions Available</p>
+    </div>
+  </article>
+  {% endfor %}
+</div>
+{% endblock %}

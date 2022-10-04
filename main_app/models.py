@@ -1,3 +1,5 @@
+from datetime import date
+from email.policy import default
 from django.db import models
 
 class Institution(models.Model):
@@ -25,3 +27,21 @@ class Account(models.Model):
 
     class Meta:
         ordering = ['account_id']
+
+class Transaction(models.Model):
+    amount = models.IntegerField(default=0)
+    description = models.CharField(max_length=250)
+    category = models.CharField(max_length=250)
+    sub_category = models.CharField(max_length=250, default='')
+    sub_sub_category = models.CharField(max_length=250, default='')
+    debited_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='debit_transactions', blank=True, null=True)
+    credited_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='credit_transactions', blank=True, null=True)
+    transaction_date = models.DateField(default=date.today)
+    transaction_id = models.CharField(max_length=250)
+    created_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.description
+
+    class Meta:
+        ordering = ['transaction_id']

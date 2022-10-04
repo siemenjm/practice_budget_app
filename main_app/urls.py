@@ -9,4 +9,5 @@ urlpatterns = [
     path('institutions/<int:pk>/', views.InstitutionDetail.as_view(), name='institution_detail'),
     path('accounts/', views.AccountList.as_view(), name='account_list'),
     path('accounts/new/', views.AccountCreate.as_view(), name='account_create'),
+    path('transactions/', views.TransactionList.as_view(), name='transaction_list'),
 ]

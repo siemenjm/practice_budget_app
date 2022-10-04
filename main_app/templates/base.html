@@ -28,8 +28,11 @@
             <div class="navbar-menu">
                 <a class="navbar-item" href="{% url 'institution_list' %}">Institutions</a>
             </div>
+            <div class="navbar-menu">
+                <a class="navbar-item" href="{% url 'account_list' %}">Accounts</a>
+            </div>
             <div class="navbar-menu navbar-end">
-                <a class="navbar-item" href="/accounts">Accounts</a>
+                <a class="navbar-item" href="{% url 'transaction_list' %}">Transactions</a>
             </div>
         </nav>
         <div class="container">

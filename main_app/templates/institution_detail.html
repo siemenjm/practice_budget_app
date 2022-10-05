@@ -11,15 +11,18 @@
         <h3 class="title is-3">Accounts</h3>
 
         {% for account in institution.accounts.all %}
-        <a href="{% url 'account_detail' account.pk %}"> 
-            <div class="account">
-                <span>{{forloop.counter}}</span>
-                <span><b>{{account.name}}</b></span>
-                <span>Type: {{account.account_type}}</span>
-                <span>Subtype: {{account.account_subtype}}</span>
-                <span>Current Balance: {{account.balance_current}}</span>
-            </div>
-        </a>
+        <div class="account">
+            <a href="{% url 'institution_detail' account.institution.pk %}">
+                <img src="{{account.institution.logo}}" alt="{{account.institution.name}}" class="institution-logo">
+            </a>
+            <a href="{% url 'account_detail' account.pk %}">
+                <p class="name">{{account.name}}</p>
+            </a>
+            <p class="balance">${{account.balance_current}}</p>
+            <a href="{% url 'institution_detail' account.institution.pk %}" class="institution-anchor">
+                <p class="institution">{{account.institution}}</p>
+            </a>
+        </div>
         {% empty %}
         <article class="message">
             <div class="message-header">

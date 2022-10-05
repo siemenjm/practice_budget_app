@@ -16,44 +16,44 @@
         <div class="categories">
                 <p class="category">{{transaction.category}} - </p>
                 <p class="sub-category">{{transaction.sub_category}}</p>
-            </div>
-            <p class="amount">${{transaction.amount}}</p>
-            {% if transaction.credited_account and transaction.debited_account %}
-            <div class="accounts-container">
-                <a href="{% url 'institution_detail' transaction.credited_account.institution.pk %}">
-                    <p class="credited-institution">From: {{transaction.credited_account.institution}} -</p>
-                </a>
-                <a href="{% url 'account_detail' transaction.credited_account.pk %}">
-                    <p class="credited-account">{{transaction.credited_account}}</p>
-                </a>
-                <a href="{% url 'institution_detail' transaction.debited_account.institution.pk %}">
-                    <p class="debited-institution">To: {{transaction.debited_account.institution}} -</p>
-                </a>
-                <a href="{% url 'account_detail' transaction.debited_account.pk %}">
-                    <p class="debited-account">{{transaction.debited_account}}</p>
-                </a>
-            </div>
-            {% elif transaction.credited_account %}
-            <div class="accounts-container">
-                <a href="{% url 'institution_detail' transaction.credited_account.institution.pk %}">
-                    <p class="credited-institution">From: {{transaction.credited_account.institution}} -</p>
-                </a>
-                <a href="{% url 'account_detail' transaction.credited_account.pk %}">
-                    <p class="credited-account">{{transaction.credited_account}}</p>
-                </a>
-            </div>
-            {% elif transaction.debited_account %}
-            <div class="accounts-container">
-                <a href="{% url 'institution_detail' transaction.debited_account.institution.pk %}">
-                    <p class="debited-institution">To: {{transaction.debited_account.institution}} -</p>
-                </a>
-                <a href="{% url 'account_detail' transaction.debited_account.pk %}">
-                    <p class="debited-account">{{transaction.debited_account}}</p>
-                </a>
-            </div>
-            {% endif %}
-            <p class="date">{{transaction.transaction_date}}</p>
         </div>
+        <p class="amount">${{transaction.amount}}</p>
+        {% if transaction.credited_account and transaction.debited_account %}
+        <div class="accounts-container">
+            <a href="{% url 'institution_detail' transaction.credited_account.institution.pk %}">
+                <p class="credited-institution">From: {{transaction.credited_account.institution}} -</p>
+            </a>
+            <a href="{% url 'account_detail' transaction.credited_account.pk %}">
+                <p class="credited-account">{{transaction.credited_account}}</p>
+            </a>
+            <a href="{% url 'institution_detail' transaction.debited_account.institution.pk %}">
+                <p class="debited-institution">To: {{transaction.debited_account.institution}} -</p>
+            </a>
+            <a href="{% url 'account_detail' transaction.debited_account.pk %}">
+                <p class="debited-account">{{transaction.debited_account}}</p>
+            </a>
+        </div>
+        {% elif transaction.credited_account %}
+        <div class="accounts-container">
+            <a href="{% url 'institution_detail' transaction.credited_account.institution.pk %}">
+                <p class="credited-institution">From: {{transaction.credited_account.institution}} -</p>
+            </a>
+            <a href="{% url 'account_detail' transaction.credited_account.pk %}">
+                <p class="credited-account">{{transaction.credited_account}}</p>
+            </a>
+        </div>
+        {% elif transaction.debited_account %}
+        <div class="accounts-container">
+            <a href="{% url 'institution_detail' transaction.debited_account.institution.pk %}">
+                <p class="debited-institution">To: {{transaction.debited_account.institution}} -</p>
+            </a>
+            <a href="{% url 'account_detail' transaction.debited_account.pk %}">
+                <p class="debited-account">{{transaction.debited_account}}</p>
+            </a>
+        </div>
+        {% endif %}
+        <p class="date">{{transaction.transaction_date}}</p>
+    </div>
     {% empty %}
     <article class="message">
         <div class="message-header">

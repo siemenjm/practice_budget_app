@@ -8,6 +8,7 @@ urlpatterns = [
     path('institutions/new/', views.InstitutionCreate.as_view(), name='institution_create'),
     path('institutions/<int:pk>/', views.InstitutionDetail.as_view(), name='institution_detail'),
     path('institutions/<int:pk>/update', views.InstitutionUpdate.as_view(), name='institution_update'),
+    path('institutions/<int:pk>/delete', views.InstitutionDelete.as_view(), name='institution_delete'),
     path('accounts/', views.AccountList.as_view(), name='account_list'),
     path('accounts/new/', views.AccountCreate.as_view(), name='account_create'),
     path('accounts/<int:pk>/', views.AccountDetail.as_view(), name='account_detail'),

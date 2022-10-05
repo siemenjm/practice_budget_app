@@ -47,6 +47,11 @@ class InstitutionUpdate(UpdateView):
     def get_success_url(self):
         return reverse('institution_detail', kwargs={'pk': self.object.pk})
 
+class InstitutionDelete(DeleteView):
+    model = Institution
+    template_name = 'institution_delete_confirmation.html'
+    success_url = '/institutions/'
+
 class AccountList(TemplateView):
     template_name = 'account_list.html'
 

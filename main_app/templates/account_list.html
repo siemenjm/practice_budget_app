@@ -7,15 +7,19 @@
 
 <a class="button" href="{% url 'account_create' %}">Add Account</a>
 
-<div class="gallery">
+<div class="account-list">
   {% for account in accounts %}
   <div class="account">
-    <span><b>{{account.name}}</b></span>
-    <span>Bank: {{account.institution}}</span>
-    <span>Account id: {{account.account_id}}</span>
-    <span>Type: {{account.account_type}}</span>
-    <span>Subtype: {{account.account_subtype}}</span>
-    <span>Current Balance: {{account.balance_current}}</span>
+    <a href="{% url 'institution_detail' account.institution.pk %}">
+        <img src="{{account.institution.logo}}" alt="{{account.institution.name}}" class="institution-logo">
+    </a>
+    <a href="{% url 'account_detail' account.pk %}">
+        <p class="name">{{account.name}}</p>
+    </a>
+    <p class="balance">${{account.balance_current}}</p>
+    <a href="{% url 'institution_detail' account.institution.pk %}" class="institution-anchor">
+        <p class="institution">{{account.institution}}</p>
+    </a>
 </div>
 	{% empty %}
   <article class="message">

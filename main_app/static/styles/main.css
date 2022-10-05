@@ -113,9 +113,29 @@ body {
     margin-top: 500px;
   }
 
-  .transaction-list {
+  .acount-list, .transaction-list {
     display: flex;
     flex-direction: column;
+  }
+
+  .account {
+    color: black;
+    background-color: #cfe8ff;
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    grid-template-rows: 50% 50%;
+    gap: 10px 50px;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  .account .institution-logo {
+    grid-area: 1 / 1 / span 2 /span 1;
+    height: 100px;
+  }
+
+  .account .institution-anchor  {
+    grid-area: 2 / 2 / span 1 / span 2;
   }
 
   .transaction {
@@ -128,12 +148,12 @@ body {
     margin: 20px;
   }
 
-  .transaction > * {
+  .account > *, .transaction > * {
     margin: 0;
     padding: 0;
   }
 
-  .transaction p {
+  .account p, .transaction p {
     font-size: 20px;
   }
 

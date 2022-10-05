@@ -18,6 +18,11 @@
         <i class="fas fa-edit"></i>
     </span>
 </a>
+<a href="{% url 'account_delete' account.pk %}" class="button is-danger">
+    <span class="icon">
+        <i class="fas fa-trash-alt"></i>
+    </span>
+</a>
 
 <h3 class="title is-3">Transactions</h3>
 {% for transaction in account.debit_transactions.all %}

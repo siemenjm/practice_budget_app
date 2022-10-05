@@ -76,6 +76,11 @@ class AccountUpdate(UpdateView):
     def get_success_url(self):
         return reverse('account_detail', kwargs={'pk': self.object.pk})
 
+class AccountDelete(DeleteView):
+    model = Account
+    template_name = 'account_delete_confirmation.html'
+    success_url = '/accounts/'
+
 class TransactionList(TemplateView):
     template_name = 'transaction_list.html'
 

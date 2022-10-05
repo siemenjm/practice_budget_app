@@ -19,4 +19,5 @@ urlpatterns = [
     path('transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction_detail'),
     path('transactions/<int:pk>/update', views.TransactionUpdate.as_view(), name='transaction_update'),
     path('transactions/<int:pk>/delete', views.TransactionDelete.as_view(), name='transaction_delete'),
+    path('users/signup/', views.Signup.as_view(), name='signup'),
 ]

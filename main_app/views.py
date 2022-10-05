@@ -68,6 +68,14 @@ class AccountDetail(DetailView):
     model = Account
     template_name = 'account_detail.html'
 
+class AccountUpdate(UpdateView):
+    model = Account
+    fields = ['account_id', 'balance_available', 'balance_current', 'name', 'account_type', 'account_subtype', 'institution']
+    template_name = 'account_update.html'
+
+    def get_success_url(self):
+        return reverse('account_detail', kwargs={'pk': self.object.pk})
+
 class TransactionList(TemplateView):
     template_name = 'transaction_list.html'
 

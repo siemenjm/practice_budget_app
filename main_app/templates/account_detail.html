@@ -12,6 +12,13 @@
         <p class="institution">{{account.institution}}</p>
     </a>
 </div>
+
+<a href="{% url 'account_update' account.pk %}" class="button is-info">Update Account
+    <span class="icon">
+        <i class="fas fa-edit"></i>
+    </span>
+</a>
+
 <h3 class="title is-3">Transactions</h3>
 {% for transaction in account.debit_transactions.all %}
 <div class="transaction">

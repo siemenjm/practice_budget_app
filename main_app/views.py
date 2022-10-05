@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
 from .models import Account, Institution, Transaction
+from django.urls import reverse
 
 class Home(TemplateView):
     template_name = 'home.html'
@@ -37,6 +38,14 @@ class InstitutionCreate(CreateView):
 class InstitutionDetail(DetailView):
     model = Institution
     template_name = 'institution_detail.html'
+
+class InstitutionUpdate(UpdateView):
+    model = Institution
+    fields = ['institution_id', 'name', 'logo']
+    template_name = 'institution_update.html'
+
+    def get_success_url(self):
+        return reverse('institution_detail', kwargs={'pk': self.object.pk})
 
 class AccountList(TemplateView):
     template_name = 'account_list.html'
@@ -79,3 +88,11 @@ class TransactionCreate(CreateView):
 class TransactionDetail(DetailView):
     model = Transaction
     template_name = 'transaction_detail.html'
+
+class TransactionUpdate(UpdateView):
+    model = Transaction
+    fields = ['amount', 'description', 'category', 'sub_category', 'sub_sub_category', 'debited_account', 'credited_account', 'transaction_date']
+    template_name = 'transaction_update.html'
+
+    def get_success_url(self):
+        return reverse('transaction_detail', kwargs={'pk': self.object.pk})

@@ -46,4 +46,10 @@
     <p class="date">{{transaction.transaction_date}}</p>
 </div>
 
+<a href="{% url 'transaction_update' transaction.pk %}" class="button is-info">Update Transaction
+    <span class="icon">
+        <i class="fas fa-edit"></i>
+    </span>
+</a>
+
 {% endblock %}

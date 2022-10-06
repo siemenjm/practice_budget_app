@@ -52,7 +52,8 @@ class Transaction(models.Model):
 
 class Tag(models.Model):
     title = models.CharField(max_length=250)
-    transactions = models.ManyToManyField(Transaction)
+    transactions = models.ManyToManyField(Transaction, default='')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.title

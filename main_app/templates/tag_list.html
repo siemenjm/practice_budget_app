@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Tags{% endblock  %}
+
+{% block content %}
+
+<h1 class="title pt-5">{{ header }}</h1>
+
+<a class="button" href="{% url 'tag_create' %}">Add Tag</a>
+
+<div class="tag-list">
+    {% for tag in tags %}
+    <div class="tag">
+        <a href="{% url 'tag_detail' tag.pk %}">
+            <p class="description">{{tag.title}}</p>
+        </a>
+    </div>
+    {% empty %}
+    <article class="message">
+        <div class="message-header">
+            <p>No Tags Available</p>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}

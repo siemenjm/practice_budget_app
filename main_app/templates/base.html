@@ -35,6 +35,9 @@
                 <div class="navbar-menu">
                     <a class="navbar-item" href="{% url 'transaction_list' %}">Transactions</a>
                 </div>
+                <div class="navbar-menu">
+                    <a class="navbar-item" href="{% url 'tag_list' %}">Tags</a>
+                </div>
                 <div class="navbar-menu navbar-end">
                     <span class="navbar-item">Welcome: {{user.username}}</span>
                     <a class="navbar-item" href="{% url 'logout' %}">Logout</a>

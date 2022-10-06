@@ -19,5 +19,9 @@ urlpatterns = [
     path('transactions/<int:pk>/', views.TransactionDetail.as_view(), name='transaction_detail'),
     path('transactions/<int:pk>/update', views.TransactionUpdate.as_view(), name='transaction_update'),
     path('transactions/<int:pk>/delete', views.TransactionDelete.as_view(), name='transaction_delete'),
+    path('tags/', views.TagList.as_view(), name='tag_list'),
+    path('tags/new/', views.TagCreate.as_view(), name='tag_create'),
+    path('tags/<int:pk>/', views.TagDetail.as_view(), name='tag_detail'),
+    path('tags/<int:pk>/transactions/<int:transaction_pk>/', views.TagTransactionAssoc.as_view(), name='tag_transaction_assoc'),
     path('users/signup/', views.Signup.as_view(), name='signup'),
 ]

@@ -113,7 +113,7 @@ body {
     margin-top: 500px;
   }
 
-  .acount-list, .transaction-list {
+  .acount-list, .transaction-list, .tag-list {
     display: flex;
     flex-direction: column;
   }
@@ -178,4 +178,9 @@ body {
   .accounts-container {
     grid-area: 2 / 1 / span 1 / span 2;
     display: flex;
+  }
+
+  .tag {
+    margin-top: 20px;
+    width: fit-content;
   }

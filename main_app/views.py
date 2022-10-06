@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.views.generic.base import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
-from .models import Account, Institution, Transaction
+from .models import Account, Institution, Transaction, Tag
 from django.urls import reverse
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -151,6 +151,45 @@ class TransactionDelete(DeleteView):
     model = Transaction
     template_name = 'transaction_delete_confirmation.html'
     success_url = '/transactions/'
+
+@method_decorator(login_required, name='dispatch')
+class TagList(TemplateView):
+    template_name = 'tag_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["tags"] = Tag.objects.filter(user = self.request.user)
+        context['header'] = 'Your Tags'
+
+        return context
+
+@method_decorator(login_required, name='dispatch')
+class TagCreate(CreateView):
+    model = Tag
+    fields = ['title']
+    template_name = 'tag_create.html'
+    success_url = '/tags/'
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(TagCreate, self).form_valid(form)
+
+@method_decorator(login_required, name='dispatch')
+class TagDetail(DetailView):
+    model = Tag
+    template_name = 'tag_detail.html'
+
+@method_decorator(login_required, name='dispatch')
+class TagTransactionAssoc(View):
+    def get(self, request, pk, transaction_pk):
+        assoc = request.GET.get('assoc')
+        if assoc == 'remove':
+            Tag.objects.get(pk=pk).transactions.remove(transaction_pk)
+        if assoc == 'add':
+            Tag.objects.get(pk=pk).transactions.add(transaction_pk)
+        
+        return redirect('/tags/')
 
 class Signup(View):
     def get(self, request):

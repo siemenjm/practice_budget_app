@@ -49,3 +49,12 @@ class Transaction(models.Model):
 
     class Meta:
         ordering = ['description']
+
+class Tag(models.Model):
+    title = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ['title']

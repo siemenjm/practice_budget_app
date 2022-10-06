@@ -52,6 +52,7 @@ class Transaction(models.Model):
 
 class Tag(models.Model):
     title = models.CharField(max_length=250)
+    transactions = models.ManyToManyField(Transaction)
 
     def __str__(self):
         return self.title

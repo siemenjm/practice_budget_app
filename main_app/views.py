@@ -38,7 +38,7 @@ class InstitutionList(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class InstitutionCreate(CreateView):
     model = Institution
-    fields = ['institution_id', 'name', 'logo']
+    fields = ['institution_identification', 'name', 'logo']
     template_name = 'institution_create.html'
     success_url = '/institutions/'
 
@@ -81,7 +81,7 @@ class AccountList(TemplateView):
 @method_decorator(login_required, name='dispatch')
 class AccountCreate(CreateView):
     model = Account
-    fields = ['account_id', 'balance_available', 'balance_current', 'name', 'account_type', 'account_subtype', 'institution']
+    fields = ['account_identification', 'balance_available', 'balance_current', 'name', 'account_type', 'account_subtype', 'institution']
     template_name = 'account_create.html'
     success_url = '/accounts/'
 

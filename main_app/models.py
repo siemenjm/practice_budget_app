@@ -4,7 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Institution(models.Model):
-    institution_id = models.CharField(max_length=100)
+    institution_identification = models.CharField(max_length=100)
     name = models.CharField(max_length=250)
     logo = models.URLField(max_length=500, default='https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Dollar_Sign.svg/500px-Dollar_Sign.svg.png?20120706173622')
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
@@ -13,10 +13,10 @@ class Institution(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['institution_id']
+        ordering = ['name']
 
 class Account(models.Model):
-    account_id = models.CharField(max_length=250)
+    account_identification = models.CharField(max_length=250)
     balance_available = models.IntegerField(default=0)
     balance_current = models.IntegerField(default=0)
     name = models.CharField(max_length=250)
@@ -29,7 +29,7 @@ class Account(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['account_id']
+        ordering = ['name']
 
 class Transaction(models.Model):
     amount = models.DecimalField(max_digits=15, decimal_places=2)
@@ -40,7 +40,7 @@ class Transaction(models.Model):
     debited_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='debit_transactions', blank=True, null=True)
     credited_account = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='credit_transactions', blank=True, null=True)
     transaction_date = models.DateField(default=date.today)
-    transaction_id = models.CharField(max_length=250)
+    transaction_identification = models.CharField(max_length=250)
     created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
@@ -48,4 +48,4 @@ class Transaction(models.Model):
         return self.description
 
     class Meta:
-        ordering = ['transaction_id']
+        ordering = ['description']
